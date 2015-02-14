@@ -4,10 +4,10 @@
   "description": "Use XSLT as a template engine for Node ",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no tests yet, WIP\" && exit 1"
   },
-  "author": "AM",
-  "license": "ISC",
+  "author": "nanymor",
+  "license": "gpl-2.0",
   "dependencies": {
     "easyxml": "^1.0.0",
     "libxslt": "^0.4.1"
