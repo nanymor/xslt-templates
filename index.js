@@ -44,7 +44,7 @@ var XSLTtransformer = function(opts) {
         console.log(xmldata);
         libxslt.parseFile(tplUrl, function(err, stylesheet){
             stylesheet.apply(xmldata, params, function(err,result) {
-                var stripped = (config.xsl.stripXML)?result.replace(/<\?xml(.+?)\?>\n/g,''):result;
+                var stripped = (config.xsl.stripXML)?result.replace(/<(\?xml|!DOCTYPE)(.+?)"\??>\n/g,''):result;
                 cb(err,stripped);
             }); 
         });
