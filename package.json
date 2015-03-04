@@ -9,7 +9,7 @@
   "author": "nanymor",
   "license": "gpl-2.0",
   "dependencies": {
-    "easyxml": "^1.0.0",
+    "easyxml": "https://github.com/nanymor/node-easyxml/tarball/master",
     "libxslt": "^0.4.1"
   }
 }
