@@ -15,7 +15,8 @@ var XSLTtransformer = function(opts) {
             manifest: true
         },
         xsl: {
-            stripXML: false
+            stripXML: false,
+            stripHTMLNS: false
         }
     };
 
@@ -38,6 +39,8 @@ var XSLTtransformer = function(opts) {
 
     var render = function(tplUrl,context,cb) {
         
+        console.log('context',context);
+
         var xmldata = serializer.render(context._locals),
             params = context.params || {};
 
@@ -45,6 +48,7 @@ var XSLTtransformer = function(opts) {
         libxslt.parseFile(tplUrl, function(err, stylesheet){
             stylesheet.apply(xmldata, params, function(err,result) {
                 var stripped = (config.xsl.stripXML)?result.replace(/<(\?xml|!DOCTYPE)(.+?)"\??>\n/g,''):result;
+                    stripped = (config.xsl.stripHTMLNS)?stripped.replace(/( xmlns=".+?"| xml:lang=".+?")/g,''):stripped;
                 cb(err,stripped);
             }); 
         });
